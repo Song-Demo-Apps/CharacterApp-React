@@ -1,6 +1,5 @@
 import './App.css'
 import {
-  BrowserRouter,
   createBrowserRouter,
   Outlet,
   RouterProvider,
