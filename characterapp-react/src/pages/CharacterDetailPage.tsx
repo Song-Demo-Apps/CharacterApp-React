@@ -1,22 +1,47 @@
 import { useEffect, useState} from "react"
-import { useLocation } from "react-router";
+import { useParams } from "react-router";
 import Character from "../models/Character";
+import Error from "../components/Error";
+
+import { getCharacterById } from "../services/character-api-service";
+import Loading from "../components/Loading";
+import NotFound from "../components/NotFound";
 
 export default function CharacterDetailPage() {
-    const currentPath = useLocation();
-    const [characterId, setCharacterId] = useState<number>(0);
+    const params = useParams();
+    const [error, setError] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
+
     const [currentCharacter, setCurrentCharacter] = useState<Character>();
     useEffect(() => {
-        setCharacterId(parseInt(currentPath.pathname.split('/')[2]))
-    }, []);
-    useEffect(() => {
-        if(characterId) {
-            fetch(`http://localhost:5133/api/Character/${characterId}`)
-            .then(res => res.json())
-            .then(json => setCurrentCharacter(json))
+        if(params.characterId) {
+            getCharacterById(parseInt(params.characterId))
+            .then(body => {
+                if(body) {
+                    setCurrentCharacter(body)
+                }
+                setLoading(false)
+            })
+            .catch((err): void => {
+                console.error(`Error occured while trying to load character with id ${params.characterId}: ` + err)
+                setError(true)
+            })
         }
-    }, [characterId]);
+    }, [])
     return <>
-        <h1>{currentCharacter?.name}</h1>
+        {
+            error ? 
+            <Error /> : 
+            (
+                loading ?
+                <Loading /> :
+                (
+                    currentCharacter ?
+                    <h1>{currentCharacter?.name}</h1> :
+                    <NotFound />               
+                )
+            )
+        }
+        
     </>
 }

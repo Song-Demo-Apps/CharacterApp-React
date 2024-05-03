@@ -7,6 +7,7 @@ import {
 import AllCharacterPage from './pages/AllCharacterPage'
 import Navbar from './components/Navbar'
 import CharacterDetailPage from './pages/CharacterDetailPage';
+import NotFound from './components/NotFound';
 
 const AppLayout = () => (
   <>
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/character/:characterId",
