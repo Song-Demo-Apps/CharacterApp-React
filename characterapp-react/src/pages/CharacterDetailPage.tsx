@@ -6,6 +6,9 @@ import Error from "../components/Error";
 import { getCharacterById } from "../services/character-api-service";
 import Loading from "../components/Loading";
 import NotFound from "../components/NotFound";
+import CharacterProfile from "../components/CharacterProfile";
+import ItemCard from "../components/CharacterItemCard";
+import CharacterItemCard from "../components/CharacterItemCard";
 
 export default function CharacterDetailPage() {
     const params = useParams();
@@ -18,6 +21,7 @@ export default function CharacterDetailPage() {
             getCharacterById(parseInt(params.characterId))
             .then(body => {
                 if(body) {
+                    console.log(body)
                     setCurrentCharacter(body)
                 }
                 setLoading(false)
@@ -27,7 +31,7 @@ export default function CharacterDetailPage() {
                 setError(true)
             })
         }
-    }, [])
+    }, [params])
     return <>
         {
             error ? 
@@ -37,7 +41,18 @@ export default function CharacterDetailPage() {
                 <Loading /> :
                 (
                     currentCharacter ?
-                    <h1>{currentCharacter?.name}</h1> :
+                    <div className="row">
+                        <div className="col-4">
+                            <CharacterProfile {...currentCharacter}></CharacterProfile>
+                        </div>
+                        {
+                            currentCharacter.characterItems &&
+                            <div className="col-6">
+                            {currentCharacter.characterItems.map(item => <CharacterItemCard key={item.id} {...item}/>)}
+                            </div>
+                        }
+                    </div>
+                     :
                     <NotFound />               
                 )
             )

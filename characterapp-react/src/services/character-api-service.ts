@@ -1,6 +1,6 @@
 import Character from "../models/Character";
 
-const baseUrl = "http://localhost:5133/api/";
+const baseUrl = "https://characterappapi.azurewebsites.net/api/";
 
 function urlBuilder(route: string[], queryparam?: {name: string, value: string}[]): string {
     let url = baseUrl

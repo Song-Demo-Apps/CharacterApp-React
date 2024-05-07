@@ -1,23 +1,13 @@
-import Speices from "./Speices"
+import CharacterItem from "./CharacterItem"
+import Species from "./Species"
 
 export default interface Character {
     id : number | undefined,
     name : string,
     doB?: Date | string,
+    age? : string
     bio?: string,
     money: number,
-    characterSpeices?: Speices,
-    characterItems? : []
-}
-
-export interface CharacterItem {
-    id: number,
-    characterId: number,
-    item: Item
-}
-
-export interface Item {
-    id: number,
-    name: string,
-    description? : string,
+    characterSpecies?: Species,
+    characterItems? : CharacterItem[]
 }

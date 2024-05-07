@@ -22,7 +22,11 @@ export default function AllCharacterPage() {
         <h1 className="mb-4">All Characters</h1>
         {
             error ? <Error />: 
-            (characters ? characters.map(c => <CharacterCard key={c.id} {...c}/>) : <Loading/>)
+            (characters ? 
+                <div className="d-flex flex-wrap">
+                    {characters.map(c => <CharacterCard key={c.id} {...c}/>)}
+                </div>
+                : <Loading/>)
         }
     </>
 }

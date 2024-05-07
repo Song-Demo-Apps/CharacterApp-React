@@ -1,4 +1,4 @@
-export default interface Speices {
+export default interface Species {
     id? : number,
     name : string,
     description? : string
