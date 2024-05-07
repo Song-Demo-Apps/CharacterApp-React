@@ -1,3 +1,7 @@
+.item-card {
+    width: 15rem;
+}
+
 .character-card {
     width: 16rem;
     margin: 5pt;

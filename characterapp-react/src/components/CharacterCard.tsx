@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Character from "../models/Character";
-import './CharacterCard.css';
+import './Card.css';
 
 export default function CharacterCard(props: Character) {
     return <>

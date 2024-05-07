@@ -1,4 +1,5 @@
 import Character from "../models/Character";
+import Item from "../models/Item";
 
 const baseUrl = "https://characterappapi.azurewebsites.net/api/";
 
@@ -45,6 +46,18 @@ export async function getCharacterById(characterId: number) : Promise<Character>
             return Promise.resolve(null)   
         }
         else if(res.ok) {
+            return res.json()
+        }
+        return Promise.reject(res)
+    })
+}
+
+export function getAllItems(offset: number = 0, limit: number = 100) : Promise<Item[]> {
+    // Build the URL for the API endpoint with the provided offset and limit parameters.
+    const url = urlBuilder(['Item'], [{name: 'offset', value: offset.toString()}, {name: 'limit', value: limit.toString()}])
+    return fetch(url)
+    .then(res => {
+        if(res.ok) {
             return res.json()
         }
         return Promise.reject(res)
