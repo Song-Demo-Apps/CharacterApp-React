@@ -7,7 +7,6 @@ import { getCharacterById } from "../services/character-api-service";
 import Loading from "../components/Loading";
 import NotFound from "../components/NotFound";
 import CharacterProfile from "../components/CharacterProfile";
-import ItemCard from "../components/CharacterItemCard";
 import CharacterItemCard from "../components/CharacterItemCard";
 
 export default function CharacterDetailPage() {
