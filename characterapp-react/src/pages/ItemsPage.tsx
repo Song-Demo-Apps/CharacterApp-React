@@ -19,7 +19,7 @@ export default function ItemsPage() {
     },[])
 
     return <>
-        <h1 className="mb-4">Buy/Sell Items</h1>
+        <h1 className="mb-4">Browse All Items</h1>
         {
             error ? <Error />: 
             (items ? 

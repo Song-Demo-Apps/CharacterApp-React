@@ -4,9 +4,11 @@ export default function ItemCard(props: Item) {
     return <>
     <div className="card item-card">
         <div className="card-body">
-            <img src={props.imageUrl} className="card-img-top" />
-            <h6 className="card-subtitle mb-2 text-body-secondary">Cost: {props.value}</h6>
+            <div className="card-image-container">
+                <img src={props.imageUrl} />
+            </div>
             <h5 className="card-title">{props.name}</h5>
+            <h6 className="card-subtitle mb-2 text-body-secondary">Cost: {props.value}</h6>
             {
                 props.description && <p className="card-text">{props.description}</p>
             }

@@ -20,7 +20,6 @@ export default function CharacterDetailPage() {
             getCharacterById(parseInt(params.characterId))
             .then(body => {
                 if(body) {
-                    console.log(body)
                     setCurrentCharacter(body)
                 }
                 setLoading(false)
@@ -40,16 +39,20 @@ export default function CharacterDetailPage() {
                 <Loading /> :
                 (
                     currentCharacter ?
-                    <div className="row">
-                        <div className="col-4">
+                    <div className="row mt-3">
+                        <div className="col-lg-3 col-xs-12">
                             <CharacterProfile {...currentCharacter}></CharacterProfile>
                         </div>
-                        {
-                            currentCharacter.characterItems &&
-                            <div className="col-6">
-                            {currentCharacter.characterItems.map(item => <CharacterItemCard key={item.id} {...item}/>)}
+                        <div className="col-lg-9 col-xs-12">
+                            <h2>Inventory</h2>
+                            <div className="d-flex flex-wrap">
+                                {
+                                    currentCharacter.characterItems &&
+                                    currentCharacter.characterItems.map(item => <CharacterItemCard key={item.id} {...item}/>)
+                                }
+                                
                             </div>
-                        }
+                        </div>
                     </div>
                      :
                     <NotFound />               

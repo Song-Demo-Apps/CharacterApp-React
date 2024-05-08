@@ -17,7 +17,6 @@ export default function AllCharacterPage() {
             setError(true)
         })
     },[])
-
     return <>
         <h1 className="mb-4">All Characters</h1>
         {

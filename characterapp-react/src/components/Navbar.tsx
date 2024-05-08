@@ -9,8 +9,9 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
+            <Link className="nav-link" to="">Characters</Link>
             <Link className="nav-link" to="items">Items</Link>
-            <Link className="nav-link" to={`character/2`}>Go See Aurynie</Link>
+            <Link className="nav-link" to="character/2">Go See Aurynie</Link>
             </div>
         </div>
         </div>

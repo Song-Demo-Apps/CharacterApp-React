@@ -1,8 +1,18 @@
-.item-card {
-    width: 15rem;
+.card {
+    margin: 5pt;
 }
 
-.character-card {
-    width: 16rem;
-    margin: 5pt;
+.character-card:hover {
+    box-shadow: .1rem .1rem .1rem .1rem rgba(9, 137, 188, 0.15);
+    cursor: pointer;
+}
+
+.card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image-container > img {
+    max-height: 10rem;
 }
