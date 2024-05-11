@@ -1,17 +1,28 @@
 import CharacterItem from "../models/CharacterItem";
-import "./Card.css"
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 export default function CharacterItemCard(props: CharacterItem) {
     return <>
-    <div className="card item-card">
-        <div className="card-body">
-            <div className="card-image-container">
-                <img src={props.item.imageUrl} />
-            </div>
-            <h5 className="card-title">{props.item.name} x {props.quantity}</h5>
-            {
-                props.item.description && <p className="card-text">{props.item.description}</p>
-            }
-            </div>
-    </div>
+    <Card sx={{ width: 200, mb: 1, mr: 1}}>
+        <CardMedia
+        component="img"
+        sx={{maxHeight: 150, objectFit: 'contain' }}
+        image={props.item.imageUrl}
+        alt={props.item.description}
+        />
+        <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+            {`${props.item.name} x ${props.quantity}`} 
+        </Typography>
+        {
+            props.item.description &&
+            <Typography variant="body1" color="text.primary">
+                {props.item.description}
+            </Typography>
+        }
+        </CardContent>
+    </Card>
     </>
 }
