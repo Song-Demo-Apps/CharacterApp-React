@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
-=======
-import {useNavigate } from "react-router-dom";
->>>>>>> e7c472fbfacf4d9d68057e62766645f125be51e5
 import Character from "../models/Character";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
