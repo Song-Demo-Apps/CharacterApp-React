@@ -4,6 +4,7 @@ import ItemCard from "../components/ItemCard";
 import Error from "../components/Error";
 import Item from "../models/Item";
 import { getAllItems } from "../services/character-api-service";
+import { Box, Typography } from "@mui/material";
 
 export default function ItemsPage() {
     const [items, setItems] = useState<Item[]>();
@@ -19,13 +20,13 @@ export default function ItemsPage() {
     },[])
 
     return <>
-        <h1 className="mb-4">Browse All Items</h1>
+        <Typography variant="h4" sx={{my: 3}}>Browse All Items</Typography>
         {
             error ? <Error />: 
             (items ? 
-                <div className="d-flex flex-wrap">
+                <Box sx={{display: 'flex', flexWrap: 'wrap'}} >
                     {items.map(c => <ItemCard key={c.id} {...c}/>)}
-                </div>
+                </Box>
                 : <Loading/>)
         }
     </>

@@ -2,12 +2,14 @@ import { useEffect, useState} from "react"
 import { useParams } from "react-router";
 import Character from "../models/Character";
 import Error from "../components/Error";
-
 import { getCharacterById } from "../services/character-api-service";
 import Loading from "../components/Loading";
 import NotFound from "../components/NotFound";
 import CharacterProfile from "../components/CharacterProfile";
 import CharacterItemCard from "../components/CharacterItemCard";
+import { Box, Typography } from "@mui/material";
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+
 
 export default function CharacterDetailPage() {
     const params = useParams();
@@ -39,21 +41,21 @@ export default function CharacterDetailPage() {
                 <Loading /> :
                 (
                     currentCharacter ?
-                    <div className="row mt-3">
-                        <div className="col-lg-3 col-xs-12">
-                            <CharacterProfile {...currentCharacter}></CharacterProfile>
-                        </div>
-                        <div className="col-lg-9 col-xs-12">
-                            <h2>Inventory</h2>
-                            <div className="d-flex flex-wrap">
+                    <Grid container spacing={1} sx={{mt:1}}>
+                        <Grid xs={12} md={3}>
+                                <CharacterProfile {...currentCharacter}></CharacterProfile>
+                        </Grid>
+                        <Grid xs={12} md={9}>
+                            <Typography variant="h4">Inventory</Typography>
+                            <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
                                 {
                                     currentCharacter.characterItems &&
                                     currentCharacter.characterItems.map(item => <CharacterItemCard key={item.id} {...item}/>)
                                 }
                                 
-                            </div>
-                        </div>
-                    </div>
+                            </Box>
+                        </Grid>
+                    </Grid>
                      :
                     <NotFound />               
                 )

@@ -4,6 +4,7 @@ import CharacterCard from "../components/CharacterCard";
 import Loading from "../components/Loading";
 import { getAllCharacters } from "../services/character-api-service";
 import Error from "../components/Error";
+import { Box, Typography } from "@mui/material";
 
 export default function AllCharacterPage() {
     const [characters, setCharacters] = useState<Character[]>();
@@ -18,13 +19,13 @@ export default function AllCharacterPage() {
         })
     },[])
     return <>
-        <h1 className="mb-4">All Characters</h1>
+        <Typography variant="h4" sx={{my: 3}}>All Characters</Typography>
         {
             error ? <Error />: 
             (characters ? 
-                <div className="d-flex flex-wrap">
+                <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
                     {characters.map(c => <CharacterCard key={c.id} {...c}/>)}
-                </div>
+                </Box>
                 : <Loading/>)
         }
     </>
