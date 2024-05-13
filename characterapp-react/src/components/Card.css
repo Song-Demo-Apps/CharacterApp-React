@@ -1,5 +1,6 @@
 .card {
     margin: 5pt;
+    max-width: 14rem;
 }
 
 .character-card:hover {
@@ -15,4 +16,5 @@
 
 .card-image-container > img {
     max-height: 10rem;
+    max-width: 100%;
 }
